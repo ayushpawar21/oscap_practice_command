@@ -1,0 +1,34 @@
+============================================
+Scanning the System for Vulnerabilities
+============================================
+
+The oscap command-line utility enables you to scan local systems, validate configuration compliance
+content, and generate reports and guides based on these scans and evaluations. This utility serves as a
+front end to the OpenSCAP library and groups its functionalities to modules (sub-commands) based on
+the type of SCAP content it processes.
+
+==========
+Procedure
+==========
+
+1 . Install the openscap-scanner package:
+
+~]# yum install openscap-scanner
+
+2 . Download the latest RHSA OVAL definitions for your system, for example:
+
+~]# wget -O - https://www.redhat.com/security/data/oval/v2/RHEL7/rhel-7.oval.xml.bz2 | bzip2 --decompress > rhel-7.oval.xml
+
+3 . Scan the system for vulnerabilities and save results to the vulnerability.html file:
+
+~]# oscap oval eval --report vulnerability.html rhel-7.oval.xml
+
+=============
+Verification
+=============
+
+1. Check the results in a browser of your choice, for example:
+
+~]$ firefox vulnerability.html &
+
+====================================xxxx============================
